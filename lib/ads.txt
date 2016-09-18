@@ -1,0 +1,15 @@
+@relation ads
+
+@attribute pictures numeric
+@attribute paragraphs numeric
+@attribute profit {classic, dugem}
+
+@data
+bach_air,85744.4963074,classic
+beethoven,24984.85949569,classic
+jeanjoseph,61462.2145682,classic
+andate,11108.71700931,classic
+faded,6533.91500588,dugem
+mrsaxobeat,6558.30312883,dugem
+sunshine,13507.25501088,dugem
+onthefloor,19049.69727005,dugem

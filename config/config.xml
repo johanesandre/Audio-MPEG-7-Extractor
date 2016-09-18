@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Config xmlns="http://mpeg7audioenc.sf.net/mpeg7audioenc.xsd" xmlns:mp7ae="http://mpeg7audioenc.sf.net/mpeg7audioenc.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Module mp7ae:enable="true" xsi:type="SoundModel">
+<label>myLabel</label>
+<numberOfStates>12</numberOfStates>
+</Module>
+<Module mp7ae:enable="true" xsi:type="AudioSpectrumBasisProjection">
+<numic>8</numic>
+<frames>0</frames>
+</Module>
+<Module mp7ae:enable="true" xsi:type="AudioSpectrumCentroidSpread"/>
+<Module mp7ae:enable="true" xsi:type="AudioHarmonicity"/>
+<Module mp7ae:enable="true" xsi:type="HarmonicSpectralCentroid"/>
+<Module mp7ae:enable="true" xsi:type="SpectralCentroid"/>
+<Module mp7ae:enable="true" xsi:type="AudioPower">
+<logScale>false</logScale>
+</Module>
+<Module mp7ae:enable="true" xsi:type="HarmonicSpectralVariation"/>
+<Module mp7ae:enable="true" xsi:type="AudioSignature">
+<decimation>32</decimation>
+</Module>
+<Module mp7ae:enable="true" xsi:type="AudioSpectrumEnvelope">
+<resolution>0.25</resolution>
+<hiEdge>16000.0</hiEdge>
+<dbScale>false</dbScale>
+<normalize>off</normalize>
+<loEdge>62.5</loEdge>
+</Module>
+<Module mp7ae:enable="true" xsi:type="AudioSpectrumFlatness">
+<hiEdge>16000.0</hiEdge>
+<loEdge>250.0</loEdge>
+</Module>
+<Module mp7ae:enable="true" xsi:type="AudioWaveform"/>
+<Module mp7ae:enable="true" xsi:type="TemporalCentroid"/>
+<Module mp7ae:enable="true" xsi:type="LogAttackTime">
+<threshold>0.02</threshold>
+</Module>
+<Module mp7ae:enable="true" xsi:type="HarmonicSpectralSpread"/>
+<Module mp7ae:enable="true" xsi:type="HarmonicSpectralDeviation"/>
+<Module mp7ae:enable="true" xsi:type="AudioFundamentalFrequency">
+<hilimit>12000.0</hilimit>
+<lolimit>50.0</lolimit>
+</Module>
+</Config>
