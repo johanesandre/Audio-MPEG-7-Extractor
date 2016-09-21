@@ -1,3 +1,5 @@
+package extractor_single;
+
 import de.crysandt.audio.mpeg7audio.Config;
 import de.crysandt.audio.mpeg7audio.ConfigDefault;
 import de.crysandt.audio.mpeg7audio.ConfigXML;
@@ -18,9 +20,9 @@ import java.io.*;
 
 
 public class Descriptor{
+    //final public GUI a = new GUI();
 
-
-    public static void lld (String[] args){
+    public static void lld (String filename1,String filename2){
         try {
             String sourceConfig = "C:\\Users\\Andre\\Documents\\NetBeansProjects\\MPEG-7_Extract\\config\\config.xml";
             InputStream inputStream = new FileInputStream(sourceConfig);
@@ -34,8 +36,9 @@ public class Descriptor{
 
             //System.out.println("1");
             //String input = new String("C:/Users/ponighzwa/IdeaProjects/CobaRP/lagu/Isyana.wav");
-//            String input = new String("D:\\Lagu Extract\\Coba\\Classic\\Mozzart-Andate from  Piano Concerto no 21.wav");
-           //  String input = 
+            //String input = new String("D:\\Lagu Extract\\Coba\\Classic\\Mozzart-Andate from  Piano Concerto no 21.wav");
+            String input = filename1; 
+//  String input = 
             //System.out.println("2");
             File file = new File(input);
             //System.out.println("3");
@@ -57,7 +60,8 @@ public class Descriptor{
             //System.out.println("5");
 
             //File file1 = new File("C:/Users/ponighzwa/IdeaProjects/CobaRP/descriptor/Isyana-final.xml");
-            File file1 = new File("D:\\Lagu Extract\\Coba\\Classic\\Mozzart-Andate from  Piano Concerto no 21.xml");
+         //   File file1 = new File("D:\\Lagu Extract\\Coba\\Classic\\Mozzart-Andate from  Piano Concerto no 21.xml");
+            File file1= new File(filename2); 
             FileWriter fileWriter = new FileWriter(file1,false);
 
             fileWriter.write(hasil);

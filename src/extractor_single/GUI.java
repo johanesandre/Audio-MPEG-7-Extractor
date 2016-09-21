@@ -1,9 +1,14 @@
+package extractor_single;
+
 
 //import static javax.management.Descriptor.lld;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
+import org.basex.core.BaseXException;
+//import extractor_single;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,8 +21,8 @@ import javax.swing.JOptionPane;
  */
 public class GUI extends javax.swing.JFrame {
 
-    private Descriptor a = new Descriptor();
-    private Main b= new Main();
+   //private Descriptor a = new Descriptor();
+  //  private Main b= new Main();
     String filename=null;
     String filename2=null;
     String output=null;
@@ -202,14 +207,24 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public String returnpathlagu()
+{
+    return filename;
+}
+public String returnpathxml()
+{
+    return filename2;
+}
 
+    
     private void wavinputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wavinputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_wavinputActionPerformed
 
     private void extrackbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extrackbuttonActionPerformed
         // TODO add your handling code here:
-        a.lld(filename, output);
+        //Descriptor.main();
+        Descriptor.lld(filename, filename2);
         JOptionPane.showMessageDialog(rootPane,"Ekstraksi Berhasil");
     }//GEN-LAST:event_extrackbuttonActionPerformed
 
@@ -228,8 +243,7 @@ public class GUI extends javax.swing.JFrame {
         filename= f.getAbsolutePath();
         filename2= f.getAbsolutePath().trim().replace(".wav",".xml");
         xmlinput.setText(filename);
-        //Descriptor a= new Descriptor();
-        //a.lld(filename,filename2);
+        
     }//GEN-LAST:event_attachxmlActionPerformed
 
     private void FeatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeatureActionPerformed
@@ -248,95 +262,316 @@ public class GUI extends javax.swing.JFrame {
         //chooser.setFileFilter(filter);
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        String filename= f.getAbsolutePath();
+        filename= f.getAbsolutePath();
 //        String filename2= f.getAbsolutePath().trim().replace(".wav",".xml"));
         //String filename2= f.filename.trim().replace(".wav",".xml")
-        String filename2= f.getAbsolutePath().trim().replace(".wav",".xml");
+        filename2= f.getAbsolutePath().trim().replace(".wav",".xml");
         wavinput.setText(filename);
   //      wavoutput.setText(filename.trim().replace(".wav",".xml"));
         wavoutput.setText(filename2);
        // Descriptor a= new Descriptor();
-        a.lld(filename,filename2);
+      //  a.lld(filename,filename2);
     }//GEN-LAST:event_attachwavActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(Feature.getSelectedItem().equals("Audio Power"))
         {
-            
+            try {
+            String[] data = XMLQUERY.AudioPowerType(filename2);
+            StringBuilder res= new StringBuilder();
+            for(int x=0;x<data.length;x++)
+                res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
         else if(Feature.getSelectedItem().equals("Audio Waveform"))
         {
-            
+                       try {
+            String[] data = XMLQUERY.AudioWaveformType(filename2);
+            StringBuilder res= new StringBuilder();
+            for(int x=0;x<data.length;x++)
+                res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             } 
         }
         else if(Feature.getSelectedItem().equals("Temporal Centroid"))
         {
-                    
+                       try {
+            String[] data = XMLQUERY.TemporalCentroid(filename2);
+            StringBuilder res= new StringBuilder();
+            for(int x=0;x<data.length;x++)
+                res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }         
         }
         else if(Feature.getSelectedItem().equals("Log Attack Time"))
         {
-                    
+                 try {
+            String[] data = XMLQUERY.LogAttackTime(filename2);
+            StringBuilder res= new StringBuilder();
+            for(int x=0;x<data.length;x++)
+                res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }        
         }
         else if(Feature.getSelectedItem().equals("Audio Spectrum Centroid Type"))
         {
-                    
+                         try {
+            String[] data = XMLQUERY.AudioSpectrumCentroidType(filename2);
+            StringBuilder res= new StringBuilder();
+            for(int x=0;x<data.length;x++)
+                res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }       
         }
          else if(Feature.getSelectedItem().equals("Audio Spectrum Spread Type"))
         {
-                    
+                          try {
+            String[] data = XMLQUERY.AudioSpectrumSpreadType(filename2);
+            StringBuilder res= new StringBuilder();
+            for(int x=0;x<data.length;x++)
+                res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
         }
          else if(Feature.getSelectedItem().equals("Audio Spectrum Envelope Type"))
         {
-                    
+            try {
+            String[] data = XMLQUERY.AudioSpectrumEnvelopeType(filename2);
+            StringBuilder res= new StringBuilder();
+            for(int x=0;x<data.length;x++)
+                res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
          else if(Feature.getSelectedItem().equals("Audio Spectrum Flatness Type"))
         {
-                    
+                          try {
+                String[] data = XMLQUERY.AudioSpectrumFlatnessType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+        
         }
          else if(Feature.getSelectedItem().equals("Audio Spectrum Basis Type"))
         {
-                    
+                                  try {
+                String[] data = XMLQUERY.AudioSpectrumBasisType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+
         }
          else if(Feature.getSelectedItem().equals("Audio Spectrum Spread Type"))
         {
-                    
+                            try {
+                String[] data = XMLQUERY.AudioSpectrumSpreadType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+      
         }
          else if(Feature.getSelectedItem().equals("Audio Spectrum Projection Type"))
         {
-                    
+              try {
+                String[] data = XMLQUERY.AudioSpectrumProjectionType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
         }
    
          else if(Feature.getSelectedItem().equals("Audio Signature Type"))
         {
-                    
+                          try {
+                String[] data = XMLQUERY.AudioSignatureType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+        
         }
          else if(Feature.getSelectedItem().equals("Sound Model"))
         {
-                    
+                                try {
+                String[] data = XMLQUERY.SoundModel(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+  
         }
          else if(Feature.getSelectedItem().equals("Audio Fundamental Frequency"))
         {
-                    
+                              try {
+                String[] data = XMLQUERY.AudioFundamentalFrequencyType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+    
         }
          else if(Feature.getSelectedItem().equals("Audio Harmonicity"))
         {
-                    
+                              try {
+                String[] data = XMLQUERY.AudioHarmonicityType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+    
         }
          else if(Feature.getSelectedItem().equals("Harmonic Spectral Centroid"))
         {
-                    
+                          try {
+                String[] data = XMLQUERY.HarmonicSpectralCentroidType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+        
         }
          else if(Feature.getSelectedItem().equals("Harmonic Spectral Deviation"))
         {
-                    
+                                  try {
+                String[] data = XMLQUERY.HarmonicSpectralDeviationType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+
         }
          else if(Feature.getSelectedItem().equals("Harmonic Spectral Spread"))
         {
+                          try {
+                String[] data = XMLQUERY.HarmonicSpectralDeviationSpreadType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+
                     
         }
          else if(Feature.getSelectedItem().equals("Harmonic Spectral Variation"))
         {
-                    
+                             try {
+                String[] data = XMLQUERY.HarmonicSpectralVariationType(filename2);
+                StringBuilder res= new StringBuilder();
+                for(int x=0;x<data.length;x++)
+                 res.append(data[x]+",");
+            String result=res.toString();
+            outputxquery.setText(result);
+            //Descriptor a= new Descriptor();
+            //a.lld(filename,filename2);
+        } catch (BaseXException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+             }      
+     
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
