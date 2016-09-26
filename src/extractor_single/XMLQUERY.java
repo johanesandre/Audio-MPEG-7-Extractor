@@ -293,13 +293,14 @@ public class XMLQUERY {
                 "declare default element namespace \"urn:mpeg:mpeg7:schema:2001\";" +
                         "declare namespace mpeg7 = \"urn:mpeg:mpeg7:schema:2001\";" +
                         "declare namespace xsi = \"http://www.w3.org/2001/XMLSchema-instance\";" +
-                        "for $x in doc(\""+path+"\")/Mpeg7/Description/Model/Initial\n return if($x/@xsi:type=\"SoundModelType\")then data($x/Transitions) else \"\"";
+                        "for $x in doc(\""+path+"\")/Mpeg7/Description/MultimediaContent/Audio/AudioDescriptor\n return if($x/@xsi:type=\"SoundModelType\")then data($x/Initial/Transitions) else \"\"";
   String hasil = new XQuery(query).execute(context);
        String[] hasil1 = hasil.split("&#xD;");
         for(int i = 0 ; i<hasil1.length;i++){
             System.out.print(hasil1[i].trim().replace(" ",","));
             if(i != hasil1.length-1)
                System.out.print(",");
+            
         }
        return hasil1;
     }

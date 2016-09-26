@@ -35,10 +35,15 @@ public class extracktor{
             Config config = ConfigXML.parse(reader);
 
             String[] nama = new String[]{
-                            "2Minutes Beethoven","2Minutes-Allegro","2Minutes-Andate","2Minutes-Bach Air on the G string","2Minutes-JeanJoseph Mouret "
+                "2Minutes- Faded","2Minutes- Things Will Get Better Lyrics ","2Minutes- Turn Up The Speakers","ALEXANDRA STAN - Mr. Saxobeat - 1","Bach, Air on the G string - 1",
+                "Beethoven-Introduction To Symphony no 5 - 1","Bon Jovi - It's My Life - 1","Bon Jovi - Livin' On A Prayer - 1","Citra - Everybody Knew - 1","Dillon Francis DJ Snake - Get Low - 1",
+                "Dimitri Vegas - Tremor - 1","DJ Snake - Middle - 1","Ello - Pergi Untuk Kembali - 1","Isyana Sarasvati - Tetap Dalam Jiwa - 1","Jean-Joseph Mouret  - 1","Jennifer Lopez-On The Floor Pitbull - 1",
+                "KOLAM SUSU-KOES PLUS - 1","Linkin Park - Somewhere I Belong - 1","Metallica - For Whom The Bell Tolls with lyrics - 1","Metallica - Whiskey In The Jar- 1",
+                "Mozart -  Allegro - 1","Mozzart-Andate  - 1","Pitbull - I Know You Want Me - 1","PROJECT POP - MOVE ON - 1","R3HAB  KSHMR - Karate - 1","R3HAB  VINAI - How We Party - 1",
+                "Raisa - Firasat - 1","Raisa - Kali Kedua - 1","RAISA - Terjebak Nostalgia - 1","RAISA- Apalah - 1","Tompi - Sedari Dulu - 1","Tompi Menghujam Jantungku - 1"
             };
 
-            String base = new String("D:\\Lagu Extract\\Coba\\2Minutes Cut\\2Minutes Classic\\");
+            String base = new String("D:\\Lagu Extract\\XML\\Wav\\Cut 2Minutes");
 
             for(int i = 0 ; i < nama.length ; i++) {
 
@@ -57,7 +62,7 @@ public class extracktor{
                 transformer.transform(domSource, result);
 
                 String hasil = stringWriter.toString();
-                File file1 = new File("D:\\Lagu Extract\\Coba\\2Minutes Cut\\2Minutes Classic\\" + nama[i] + ".xml");
+                File file1 = new File("D:\\Lagu Extract\\XML\\Wav\\Cut 2Minute\\" + nama[i] + ".xml");
                 FileWriter fileWriter = new FileWriter(file1, false);
 
                 fileWriter.write(hasil);

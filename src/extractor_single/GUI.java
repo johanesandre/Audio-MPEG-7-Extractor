@@ -113,8 +113,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        outputxquery.setEditable(false);
         outputxquery.setColumns(20);
+        outputxquery.setLineWrap(true);
         outputxquery.setRows(5);
         jScrollPane2.setViewportView(outputxquery);
 
@@ -166,10 +166,11 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(xmlinput, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -462,7 +463,7 @@ public String returnpathxml()
         }
          else if(Feature.getSelectedItem().equals("Sound Model"))
         {
-                                try {
+                try {
                 String[] data = XMLQUERY.SoundModel(filename2);
                 StringBuilder res= new StringBuilder();
                 for(int x=0;x<data.length;x++)
@@ -573,6 +574,7 @@ public String returnpathxml()
              }      
      
         }
+//        panjang.setText(result.length);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
